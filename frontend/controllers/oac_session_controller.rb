@@ -68,7 +68,9 @@ class OacSessionController < SessionController
     logoutUrl              = Addressable::URI.parse(AppConfig[:omniauthCas][:provider][:url])
     logoutUrl.path         = AppConfig[:omniauthCas][:logoutUrlPath]
     logoutUrl.query_values = { :app => 'ArchivesSpace',
-                               :url => appUrl.to_s }
+                               :url => appUrl.to_s,
+                               :service => serviceUrl.to_s
+                             }
 
     redirect_to logoutUrl.to_s
 
